@@ -1,0 +1,325 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13222,        317]
+NotebookOptionsPosition[     12649,        299]
+NotebookOutlinePosition[     13043,        315]
+CellTagsIndexPosition[     13000,        312]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"animation", " ", "=", " ", 
+   RowBox[{"Animate", "[", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "rho", ",", "depolarizedRho", ",", "blochVector", ",", 
+         "depolarizedBlochVector"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"rho", "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Cos", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}], "^", "2"}], ",", 
+             RowBox[{
+              RowBox[{"Exp", "[", 
+               RowBox[{
+                RowBox[{"-", "I"}], " ", "phi"}], "]"}], " ", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}], " ", 
+              RowBox[{"Cos", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Exp", "[", 
+               RowBox[{"I", " ", "phi"}], "]"}], " ", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}], " ", 
+              RowBox[{"Cos", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"Sin", "[", 
+               RowBox[{"theta", "/", "2"}], "]"}], "^", "2"}]}], "}"}]}], 
+          "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"depolarizedRho", "=", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", "p"}], ")"}], " ", "rho"}], "+", 
+          RowBox[{
+           RowBox[{"(", "p", ")"}], " ", 
+           RowBox[{
+            RowBox[{"IdentityMatrix", "[", "2", "]"}], "/", "2"}]}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"blochVector", "=", 
+         RowBox[{"N", "[", 
+          RowBox[{"Re", "[", 
+           RowBox[{"Tr", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"rho", ".", 
+               RowBox[{"PauliMatrix", "[", "1", "]"}]}], ",", 
+              RowBox[{"rho", ".", 
+               RowBox[{"PauliMatrix", "[", "2", "]"}]}], ",", 
+              RowBox[{"rho", ".", 
+               RowBox[{"PauliMatrix", "[", "3", "]"}]}]}], "}"}]}], "]"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"depolarizedBlochVector", "=", 
+         RowBox[{"N", "[", 
+          RowBox[{"Re", "[", 
+           RowBox[{"Tr", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"depolarizedRho", ".", 
+               RowBox[{"PauliMatrix", "[", "1", "]"}]}], ",", 
+              RowBox[{"depolarizedRho", ".", 
+               RowBox[{"PauliMatrix", "[", "2", "]"}]}], ",", 
+              RowBox[{"depolarizedRho", ".", 
+               RowBox[{"PauliMatrix", "[", "3", "]"}]}]}], "}"}]}], "]"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Opacity", "[", "0.2", "]"}], ",", 
+              RowBox[{"Sphere", "[", "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Arrowheads", "[", "0.03", "]"}], ",", 
+              RowBox[{"Arrow", "[", 
+               RowBox[{"Tube", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                   "blochVector"}], "}"}], ",", "0.02"}], "]"}], "]"}], ",", 
+              RowBox[{"Text", "[", 
+               RowBox[{"\"\<Before\>\"", ",", 
+                RowBox[{"1.2", " ", "blochVector"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], ",", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"Red", ",", 
+              RowBox[{"Arrow", "[", 
+               RowBox[{"Tube", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                   "depolarizedBlochVector"}], "}"}], ",", "0.02"}], "]"}], 
+               "]"}], ",", 
+              RowBox[{"Text", "[", 
+               RowBox[{"\"\<After\>\"", ",", 
+                RowBox[{"1.2", " ", "depolarizedBlochVector"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], ",", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}]}], "}"}]}], "}"}], ",", 
+          RowBox[{"Axes", "->", "True"}], ",", 
+          RowBox[{"AxesLabel", "->", 
+           RowBox[{"{", 
+            RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], 
+            "}"}]}], ",", 
+          RowBox[{"PlotRange", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"ImageSize", "->", "200"}]}], "]"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"theta", ",", 
+         RowBox[{"Pi", "/", "4"}], ",", "\"\<Theta\>\""}], "}"}], ",", "0", 
+       ",", "Pi"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"phi", ",", 
+         RowBox[{"Pi", "/", "4"}], ",", "\"\<Phi\>\""}], "}"}], ",", "0", ",", 
+       RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"p", ",", "0.1", ",", "\"\<Depolarizing parameter\>\""}], 
+        "}"}], ",", "0", ",", "1"}], "}"}], ",", " ", 
+     RowBox[{"AnimationRunning", "->", "False"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<depolarizing_viz.gif\>\"", ",", "animation"}], "]"}], "\n", 
+  "\n", "\n", "\n"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.901999309607217*^9, 3.9019993096098013`*^9}, 
+   3.90199938974795*^9, 3.9019994709680147`*^9, {3.903697601207156*^9, 
+   3.9036976057571583`*^9}, 3.903869735680688*^9, {3.903869800121274*^9, 
+   3.903869801577276*^9}, {3.903871273494323*^9, 3.903871273894095*^9}, {
+   3.9041035430735292`*^9, 3.9041035468835573`*^9}, {3.90410370984634*^9, 
+   3.9041037103276443`*^9}, {3.90410390522323*^9, 3.9041039067438*^9}, {
+   3.904104254102207*^9, 3.904104320319042*^9}, {3.904104666831699*^9, 
+   3.904104667094098*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"5e39b771-e400-4ca7-b3c7-b8e206e80c35"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`p$$ = 0.1, $CellContext`phi$$ = 
+    Rational[1, 4] Pi, $CellContext`theta$$ = Rational[1, 4] Pi, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`theta$$], Rational[1, 4] Pi, "Theta"}, 0, Pi}, {{
+       Hold[$CellContext`phi$$], Rational[1, 4] Pi, "Phi"}, 0, 2 Pi}, {{
+       Hold[$CellContext`p$$], 0.1, "Depolarizing parameter"}, 0, 1}}, 
+    Typeset`size$$ = {200., {103., 107.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`p$$ = 0.1, $CellContext`phi$$ = 
+        Rational[1, 4] Pi, $CellContext`theta$$ = Rational[1, 4] Pi}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`rho$, $CellContext`depolarizedRho$, \
+$CellContext`blochVector$, $CellContext`depolarizedBlochVector$}, \
+$CellContext`rho$ = {{
+           Cos[$CellContext`theta$$/2]^2, Exp[(-I) $CellContext`phi$$] 
+            Sin[$CellContext`theta$$/2] Cos[$CellContext`theta$$/2]}, {
+           Exp[I $CellContext`phi$$] Sin[$CellContext`theta$$/2] 
+            Cos[$CellContext`theta$$/2], 
+            Sin[$CellContext`theta$$/2]^2}}; $CellContext`depolarizedRho$ = (
+            1 - $CellContext`p$$) $CellContext`rho$ + $CellContext`p$$ (
+            IdentityMatrix[2]/2); $CellContext`blochVector$ = N[
+           Re[
+            Map[Tr, {
+              Dot[$CellContext`rho$, 
+               PauliMatrix[1]], 
+              Dot[$CellContext`rho$, 
+               PauliMatrix[2]], 
+              Dot[$CellContext`rho$, 
+               PauliMatrix[3]]}]]]; $CellContext`depolarizedBlochVector$ = N[
+           Re[
+            Map[Tr, {
+              Dot[$CellContext`depolarizedRho$, 
+               PauliMatrix[1]], 
+              Dot[$CellContext`depolarizedRho$, 
+               PauliMatrix[2]], 
+              Dot[$CellContext`depolarizedRho$, 
+               PauliMatrix[3]]}]]]; Graphics3D[{{
+            Opacity[0.2], 
+            Sphere[]}, {
+            Arrowheads[0.03], 
+            Arrow[
+             Tube[{{0, 0, 0}, $CellContext`blochVector$}, 0.02]], 
+            Text["Before", 1.2 $CellContext`blochVector$, {-1, -1}]}, {Red, 
+            Arrow[
+             Tube[{{0, 0, 0}, $CellContext`depolarizedBlochVector$}, 0.02]], 
+            Text[
+            "After", 1.2 $CellContext`depolarizedBlochVector$, {-1, -1}]}}, 
+          Axes -> True, AxesLabel -> {"x", "y", "z"}, 
+          PlotRange -> {{-1, 1}, {-1, 1}, {-1, 1}}, ImageSize -> 200]], 
+      "Specifications" :> {{{$CellContext`theta$$, Rational[1, 4] Pi, 
+          "Theta"}, 0, Pi, AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {{$CellContext`phi$$, Rational[1, 4] Pi, 
+          "Phi"}, 0, 2 Pi, AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}, {{$CellContext`p$$, 0.1, 
+          "Depolarizing parameter"}, 0, 1, AnimationRunning -> False, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{421., {168., 174.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.90199942518591*^9, 3.9019994734166107`*^9, 3.9019996324095297`*^9, 
+   3.9036976189738207`*^9, 3.9038697405832357`*^9, 3.903869804469273*^9, 
+   3.90387121908885*^9, 3.904103550936987*^9, {3.904104300719549*^9, 
+   3.904104323882133*^9}, 3.9041046703200083`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"d4ffa076-6495-4f94-8a69-fc335067c9cc"],
+
+Cell[BoxData["\<\"depolarizing_viz.gif\"\>"], "Output",
+ CellChangeTimes->{
+  3.90199942518591*^9, 3.9019994734166107`*^9, 3.9019996324095297`*^9, 
+   3.9036976189738207`*^9, 3.9038697405832357`*^9, 3.903869804469273*^9, 
+   3.90387121908885*^9, 3.904103550936987*^9, {3.904104300719549*^9, 
+   3.904104323882133*^9}, 3.904104702484071*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"35dd980f-4025-4bfc-bfcf-ffee9145e556"]
+}, Open  ]]
+},
+WindowSize->{808, 747},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0f29ae69-75b5-4e9d-9dcf-43be430f4fc5"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6840, 170, 535, "Input",ExpressionUUID->"5e39b771-e400-4ca7-b3c7-b8e206e80c35"],
+Cell[7423, 194, 4788, 94, 361, "Output",ExpressionUUID->"d4ffa076-6495-4f94-8a69-fc335067c9cc"],
+Cell[12214, 290, 419, 6, 82, "Output",ExpressionUUID->"35dd980f-4025-4bfc-bfcf-ffee9145e556"]
+}, Open  ]]
+}
+]
+*)
+
